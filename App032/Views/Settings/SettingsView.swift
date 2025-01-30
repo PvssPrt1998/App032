@@ -10,6 +10,8 @@ struct SettingsView: View {
     @Environment(\.openURL) var openURL
     @State var notificationsOn = false
     
+    @Binding var isSubscription: Bool
+    
     var body: some View {
         ZStack {
             LinearGradient(colors: [.c393939, .black], startPoint: .top, endPoint: .bottom)
@@ -32,7 +34,7 @@ struct SettingsView: View {
         .navigationBarHidden(true)
     }
     
-    private var content: some View {
+    @ViewBuilder private var content: some View {
         ScrollView(.vertical) {
             VStack(spacing: 20) {
                 purchasesGroup
@@ -258,7 +260,7 @@ struct SettingsView: View {
         }
     }
     
-    private var purchasesGroup: some View {
+    @ViewBuilder private var purchasesGroup: some View {
         VStack(spacing: 4) {
             Text("Purchases")
                 .font(.system(size: 13, weight: .semibold))
@@ -266,8 +268,10 @@ struct SettingsView: View {
                 .padding(.bottom, 6)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            NavigationLink {
-                Paywall()
+            Button {
+                withAnimation {
+                    isSubscription = true
+                }
             } label: {
                 HStack(spacing: 4) {
                     Image(systemName: "crown")
@@ -372,8 +376,8 @@ struct SettingsView: View {
             })
         }
 }
-
-#Preview {
-    SettingsView()
-        .environmentObject(Source())
-}
+//
+//#Preview {
+//    SettingsView()
+//        .environmentObject(Source())
+//}

@@ -7,6 +7,7 @@ struct Paywall: View {
     @EnvironmentObject var source: Source
     
     @State var isYear = true
+    @Binding var isSubscription: Bool
     
     var body: some View {
         ZStack {
@@ -20,6 +21,21 @@ struct Paywall: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
                 .ignoresSafeArea()
                 .overlay(content)
+            
+            Button {
+                withAnimation {
+                    self.isSubscription = false
+                }
+            } label: {
+                Image(systemName: "chevron.left")
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundColor(.mainColorYellow)
+                Text("Back")
+                    .font(.system(size: 17, weight: .regular))
+                    .foregroundColor(.white.opacity(0.35))
+            }
+            .padding(EdgeInsets(top: 8, leading: 16, bottom: 0, trailing: 16))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
     }
     
@@ -35,27 +51,34 @@ struct Paywall: View {
                         Image(systemName: "hare")
                             .font(.system(size: 17, weight: .regular))
                             .foregroundColor(.mainColorYellow)
+                            .frame(width: 32, height: 32)
                         Text("Quick generations")
                             .font(.system(size: 15, weight: .regular))
                             .foregroundColor(.white)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     HStack(spacing: 2) {
                         Image(systemName: "checkmark.circle")
                             .font(.system(size: 17, weight: .regular))
                             .foregroundColor(.mainColorYellow)
+                            .frame(width: 32, height: 32)
                         Text("Unlimited saving")
                             .font(.system(size: 15, weight: .regular))
                             .foregroundColor(.white)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     HStack(spacing: 2) {
                         Image(systemName: "sparkles")
                             .font(.system(size: 17, weight: .regular))
                             .foregroundColor(.mainColorYellow)
+                            .frame(width: 32, height: 32)
                         Text("Full Access")
                             .font(.system(size: 15, weight: .regular))
                             .foregroundColor(.white)
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
+                .frame(width: 159)
             }
             .padding(.bottom, 20)
             SubscriptionButtons(isYear: $isYear)
@@ -129,8 +152,8 @@ struct Paywall: View {
     }
 }
 
-#Preview {
-    Paywall()
-        .environmentObject(Source())
-}
+//#Preview {
+//    Paywall()
+//        .environmentObject(Source())
+//}
 

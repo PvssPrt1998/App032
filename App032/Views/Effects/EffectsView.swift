@@ -11,6 +11,8 @@ struct EffectsView: View {
     
     @State var inputImage: UIImage?
     
+    @Binding var isSubscription: Bool
+    
     var body: some View {
         ZStack {
             LinearGradient(colors: [.c393939, .black], startPoint: .top, endPoint: .bottom)
@@ -24,7 +26,7 @@ struct EffectsView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                HeaderView(text: "Create a video", hasProSubscription: true) {
+                HeaderView(text: "Create a video", hasProSubscription: true, isSubscription: $isSubscription) {
                     
                 }
                 .background(Color.black)
@@ -119,7 +121,7 @@ struct EffectsView: View {
     }
 }
 
-#Preview {
-    EffectsView()
-        .environmentObject(Source())
-}
+//#Preview {
+//    EffectsView()
+//        .environmentObject(Source())
+//}

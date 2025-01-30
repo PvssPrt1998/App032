@@ -5,6 +5,8 @@ struct HistoryView: View {
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @EnvironmentObject var source: Source
     
+    @Binding var isSubscription: Bool
+    
     var body: some View {
         ZStack {
             LinearGradient(colors: [.c393939, .black], startPoint: .top, endPoint: .bottom)
@@ -15,7 +17,7 @@ struct HistoryView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
-                HeaderView(text: "History", hasProSubscription: true) {
+                HeaderView(text: "History", hasProSubscription: true, isSubscription: $isSubscription) {
                     
                 }
                 .background(Color.black)
@@ -32,7 +34,7 @@ struct HistoryView: View {
     }
 }
 
-#Preview {
-    HistoryView()
-        .environmentObject(Source())
-}
+//#Preview {
+//    HistoryView()
+//        .environmentObject(Source())
+//}

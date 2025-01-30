@@ -6,8 +6,11 @@ struct Tab: View {
     @State var selection = 0
     @Binding var screen: Screen
     
-    init(screen: Binding<Screen>) {
+    @Binding var isSubscription: Bool
+    
+    init(screen: Binding<Screen>, isSubscription: Binding<Bool>) {
         self._screen = screen
+        self._isSubscription = isSubscription
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.stackedLayoutAppearance.normal.iconColor = UIColor(rgbColorCodeRed: 153, green: 153, blue: 153, alpha: 1)
@@ -27,19 +30,19 @@ struct Tab: View {
         NavigationView {
             ZStack {
                 TabView(selection: $selection) {
-                    EffectsView()
+                    EffectsView(isSubscription: $isSubscription)
                         .tabItem { VStack {
                             tabViewImage("sparkles")
                             Text("Effects").font(.system(size: 10, weight: .medium))
                         } }
                         .tag(0)
-                    PromtView()
+                    PromtView(isSubscription: $isSubscription)
                         .tabItem { VStack {
                             tabViewImage("wand.and.stars")
                             Text("Promt").font(.system(size: 10, weight: .medium))
                         } }
                         .tag(1)
-                    HistoryView()//SettingsView(screen: $screen)
+                    HistoryView(isSubscription: $isSubscription)//SettingsView(screen: $screen)
                         .tabItem {
                             VStack {
                                 tabViewImage("clock")
@@ -83,15 +86,15 @@ struct Tab: View {
     }
 }
 
-struct Tab_Preview: PreviewProvider {
-    
-    @State static var screen: Screen = .main
-    
-    static var previews: some View {
-        Tab(screen: $screen)
-            .environmentObject(Source())
-    }
-}
+//struct Tab_Preview: PreviewProvider {
+//    
+//    @State static var screen: Screen = .main
+//    
+//    static var previews: some View {
+//        Tab(screen: $screen)
+//            .environmentObject(Source())
+//    }
+//}
 
 extension UIColor {
    convenience init(rgbColorCodeRed red: Int, green: Int, blue: Int, alpha: CGFloat) {

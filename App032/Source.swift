@@ -32,6 +32,9 @@ final class Source: NSObject, ObservableObject, URLSessionDelegate {
             videoIDs = vids
         }
         loadPaywalls { value in
+            if self.hasActiveSubscription() {
+                self.proSubscription = true
+            }
             completion(value)
         }
     }

@@ -5,7 +5,9 @@ struct HeaderView: View {
     @EnvironmentObject var source: Source
     let text: String
     let hasProSubscription: Bool
+    @Binding var isSubscription: Bool
     let settingsAction: () -> Void
+   
     
     var body: some View {
         VStack(spacing: 7) {
@@ -24,7 +26,7 @@ struct HeaderView: View {
                         .opacity(source.proSubscription ? 1 : 0)
                     
                     NavigationLink {
-                        SettingsView()
+                        SettingsView(isSubscription: $isSubscription)
                     } label: {
                         Image(systemName: "gearshape")
                             .font(.system(size: 17,weight: .regular))
@@ -43,9 +45,9 @@ struct HeaderView: View {
     }
 }
 
-#Preview {
-    HeaderView(text: "Create video", hasProSubscription: true, settingsAction: {})
-        .padding()
-        .background(Color.black)
-        .environmentObject(Source())
-}
+//#Preview {
+//    HeaderView(text: "Create video", hasProSubscription: true, settingsAction: {})
+//        .padding()
+//        .background(Color.black)
+//        .environmentObject(Source())
+//}

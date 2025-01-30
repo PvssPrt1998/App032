@@ -8,6 +8,8 @@ struct PromtView: View {
     @State var negativePromtOn = false
     @State var negativePromtText = ""
     
+    @Binding var isSubscription: Bool
+    
     enum Style {
         case art
         case realism
@@ -31,7 +33,7 @@ struct PromtView: View {
                 }
             
             VStack(spacing: 0) {
-                HeaderView(text: "Create a video", hasProSubscription: true) {
+                HeaderView(text: "Create a video", hasProSubscription: true, isSubscription: $isSubscription) {
                     
                 }
                 .background(Color.black)
@@ -278,7 +280,7 @@ struct PromtView: View {
     }
 }
 
-#Preview {
-    PromtView()
-        .environmentObject(Source())
-}
+//#Preview {
+//    PromtView()
+//        .environmentObject(Source())
+//}
