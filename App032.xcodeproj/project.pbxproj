@@ -552,7 +552,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App032/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Pika&PixVerse Video Generator";
+				INFOPLIST_KEY_CFBundleDisplayName = "Video Hug Effect Generator";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to take photos";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app lest you browse and edit photos from your library";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you";
@@ -591,7 +591,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App032/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Pika&PixVerse Video Generator";
+				INFOPLIST_KEY_CFBundleDisplayName = "Video Hug Effect Generator";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow access to the camera to take photos";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app lest you browse and edit photos from your library";
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you";
